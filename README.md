@@ -1,5 +1,4 @@
-# Markzwei
-A markdown alternative
+# Markzwei: A markdown alternative
 
 **Current Version   0.1**
 
