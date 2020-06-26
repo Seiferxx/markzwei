@@ -11,11 +11,12 @@ to Markdown, the language in which this is based, and zwei which means two in Ge
 
 ## Components
   * Headers
-  * Horizontal rules
+  * Horizontal rule
   * Block quotes
   * Code blocks
   * Lists
   * Paragraphs
+  * Highlighting
   * Bold and Italics
   * Images
   * Links
@@ -23,4 +24,37 @@ to Markdown, the language in which this is based, and zwei which means two in Ge
   * Mentions
 
 ## Headers
-Markzwei only allows 3 levels of headers,
+Markzwei only allows 3 levels of headers, instead of the 6 defined on the Markdown rules.
+To mark a line as a header start the line with a **#** followed by an empty space character. 
+Use two and three hash signs respectively for level 2 and 3 headers. Headers can only contain
+text in normal, italics, or bold form.
+
+## Horizontal Rule
+
+## Block quote
+
+## Code block
+
+## Lists
+
+### Ordered List
+
+### Unordered List
+
+## Paragraphs
+
+## Highlighting
+
+## Bold and Italics
+
+## Images
+
+## Links
+
+## Tags
+
+## Mentions
+
+
+
+
