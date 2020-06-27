@@ -1,0 +1,63 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+#Eclipse files
+
+.settings/
+.tern-project
+.npmrc
+wissen.iml
+
+#Maven files
+
+#Java files
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+#Common files
+*~
+/.apt_generated/
+*.log
+*.out
+*.gz
+
+#Node plugin files
+node/
+node_modules/
+etc/
+package-lock.json
+.mvn/
+mvnw
+mvnw.cmd
