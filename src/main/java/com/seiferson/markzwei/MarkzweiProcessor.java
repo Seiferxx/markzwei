@@ -40,8 +40,8 @@ public class MarkzweiProcessor {
             component.getRule().getComponent().equals("header2") ||
             component.getRule().getComponent().equals("header3"))
         ) {
-            component.setText(component.getText().replaceAll("(^|\\s)(\\[)([^\\]]+?)(\\])(\\()([^\\)]+?)(\\))(?=(\\s|$))", "$1<a href=\"$6\">$3</a>"));
-            component.setText(component.getText().replaceAll("(^|\\s)(!\\[)([^\\]]+?)(\\]\\()([^\\)]+?)(\\))(?=\\s|$)", "$1<img src=\"$5\" alt=\"$3\" />"));
+            component.setText(component.getText().replaceAll("(^|\\s)(\\[)([^\\]]+?)(\\])(\\()([^\\)]+?)(\\))(?=(\\s|$))", "$1<a target=\"_blank\" href=\"$6\">$3</a>"));
+            component.setText(component.getText().replaceAll("(^|\\s)(!\\[)([^\\]]+?)(\\]\\()([^\\)]+?)(\\))(?=\\s|$)", "$1<figure><img class=\"u-max-full-width\" src=\"$5\" alt=\"$3\" /><figcaption style=\"text-align:center;\"><em>$3</em></figcaption></figure>"));
             component.setText(component.getText().replaceAll("(^|\\s)(@[^\\s]+)(?=(\\s|$))", "$1<a href=\"#$2\">$2</a>"));
             component.setText(component.getText().replaceAll("(^|\\s)(#[^\\s]+)(?=(\\s|$))", "$1<a href=\"#$2\">$2</a>"));
             component.setText(component.getText().replaceAll("`(.*?)`", "<q>$1</q>"));
@@ -73,8 +73,10 @@ public class MarkzweiProcessor {
         while (iterator.hasNext()) {
             Component component = iterator.next();
             String componentName = component.getRule().getComponent();
-            if(!component.getRule().getComponent().equals("horizontalRule"))
-                processInlineComponents(component);
+
+            if(current == null || !current.getRule().getComponent().equals("segment"))
+                if(!componentName.equals("horizontalRule"))
+                    processInlineComponents(component);
 
             if (current != null) {
                 if(current.getRule().getComponent().equals(componentName)) {
@@ -151,7 +153,7 @@ public class MarkzweiProcessor {
             }
         }
 
-        return getText(root);
+        return getText(root).replaceAll("\n</pre", "</code></pre").replaceAll("<pre> \n", "<pre><code>");
 
     }
 
@@ -159,16 +161,16 @@ public class MarkzweiProcessor {
         String htmlText = "";
 
         if(component.getRule().getComponent().equals("text")){
-            htmlText += component.getText();
+            htmlText += component.getText() + "\n";
         } else {
             if(component.getRule().getComponent().equals("horizontalRule")) {
-                htmlText += "<" + component.getRule().getTag() + "/>";
+                htmlText += "<" + component.getRule().getTag() + "/> \n";
             } else {
-                htmlText += "<" + component.getRule().getTag() + ">";
+                htmlText += "<" + component.getRule().getTag() + "> \n";
                 for (Component child : component.getChildren()) {
                     htmlText += getText(child);
                 }
-                htmlText += "</" + component.getRule().getTag() + ">";
+                htmlText += "</" + component.getRule().getTag() + "> \n";
             }
         }
         return htmlText;
