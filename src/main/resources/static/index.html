@@ -3,39 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <title>Markzwei</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
-    <style>
-        @font-face {
-          font-family: 'content';
-          src: URL('/font/content.ttf') format('truetype');
-        }
-
-        p {
-            font-family: content;
-            font-size: 0.9em;
-        }
-
-        blockquote {
-          font-family: content;
-          font-style: italic;
-          font-size: 1.2em;
-          padding: 10px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
   </head>
   <body>
     <br/>
     <br/>
-    <br/>
-    <br/>
     <div class="container">
       <div class="row">
-        <div class="six columns">
+        <div class="column column-50">
           <textarea id="text" style="width: 100%; height: 100vh;" onchange="parseText()"></textarea>
         </div>
-        <div class="six columns">
-          <output id="result"></output>
+        <div class="column column-50">
+          <pre><code id="result"></code></pre>
         </div>
       </div>
     </div>
@@ -52,7 +33,7 @@
             .then(response => response.text())
             .then(function(data) {
                 console.log(data);
-                document.getElementById("result").innerHTML = data;
+                document.getElementById("result").textContent = data;
             })
             .catch((error) => {
               console.error('Error:', error);
